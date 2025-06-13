@@ -1,0 +1,119 @@
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.logo {
+    width: 30%;
+    margin: 2% auto;
+}
+
+
+form {
+    background: rgba(0, 0, 0, 0.28);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.1px);
+    -webkit-backdrop-filter: blur(5.1px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 3%;
+    border-radius: 16px;
+    width: 40%;
+}
+
+.form__group {
+
+    position: relative;
+    padding: 15px 0 0;
+    width: 100%;
+}
+
+.seco {
+    margin-top: 5%;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #9b9b9b;
+    outline: 0;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    position: relative;
+}
+
+.form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown~.form__label {
+    font-size: 1rem;
+    cursor: text;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #9b9b9b;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 1px;
+    border-image: linear-gradient(to right, #11998e, #ffffff);
+    border-image-slice: 1;
+}
+
+.form__field:focus~.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+    box-shadow: none;
+}
+
+form > input {
+    background-color: transparent;
+    width: 100%;
+    font-family: inherit;
+    margin-top: 5%;
+    padding: 10px 0;
+    border: 1px solid #9b9b9b;
+    border-radius: 16px;
+    color: rgba(255, 255, 255, 0.966);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+form > input:hover {
+    background-color: #9b9b9b;
+    transition: 300ms;
+}
+
+.err {
+    color: #f00;
+    font-family: inherit;
+    margin-top: 10px;
+    display: none;
+}

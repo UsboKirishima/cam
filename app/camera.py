@@ -1,17 +1,26 @@
+# camera.py
 import cv2
 
-def get_inputs():
-    return
+class Camera:
+    def __init__(self):
+        self.cap = cv2.VideoCapture(0)
+
+    def __del__(self):
+        self.cap.release()
+
+    def get_frame(self):
+        success, frame = self.cap.read()
+        if not success:
+            return None
+        ret, buffer = cv2.imencode('.jpg', frame)
+        return buffer.tobytes()
+
+camera = Camera()
 
 def get_frames():
-    cap = cv2.VideoCapture(0)  # 0 = default camera
     while True:
-        success, frame = cap.read()
-        if not success:
+        frame = camera.get_frame()
+        if frame is None:
             break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            # multipart
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')

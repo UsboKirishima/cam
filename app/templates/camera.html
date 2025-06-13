@@ -1,12 +1,40 @@
 <html>
 
 <head>
-    <title>Webcam Stream</title>
+    <title>333revenge's cam</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <h1>Streaming Webcam</h1>
-    <img src="{{ url_for('main.video_feed') }}" width="640" height="480">
+    <nav>
+        <img class="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
+        <div class="info">
+            <p><b>User:</b> usbo</p>
+            <p><b>IP Address:</b> 192.168.0.103</p>
+        </div>
+    </nav>
+    <main>
+        <section class="cam">
+            <div>
+                <img class="camera" src="{{ url_for('main.video_feed') }}" width="640" height="480">
+            </div>
+            <div class="details">
+                <!-- 
+                <ul>
+                    {% for device in inputs %}
+                    <li>{{ device }}</li>
+                    {% endfor %}
+                </ul>
+                -->
+
+                <p><b>State:</b> Online</p>
+                <p><b>Running on:</b> 127.0.0.1 <b>Port:</b> 5000</p>
+                <p><b>RAM:</b> 53%</p>
+                <p><b>CPU:</b> 12%</p>
+                <p><b>Uptime:</b> 13hours</p>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

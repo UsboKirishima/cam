@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>333revenge's cam</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+</head>
+
+<body>
+    <img class="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
+    <form method="post">
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" name="username" id='name' required />
+            <label for="name" class="form__label">Name</label>
+        </div>
+
+        <div class="form__group field seco">
+            <input type="password" class="form__field" placeholder="Password" name="password" id='password' required />
+            <label for="password" class="form__label">Password</label>
+        </div>
+        <input type="submit" value="Login">
+        <p class="err">Invalid password gang</p>
+    </form>
+</body>
+
+</html>

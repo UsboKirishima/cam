@@ -9,8 +9,9 @@
     <nav>
         <img class="logo" src="{{ url_for('static', filename='logo.png') }}" alt="">
         <div class="info">
-            <p><b>User:</b> usbo</p>
-            <p><b>IP Address:</b> 192.168.0.103</p>
+            <p><b>User:</b> {{ finfo['username'] }}</p>
+            <p><b>IP Address:</b> {{ info['ip'] }}</p>
+            <a class="logout" href="/logout"><img src="{{ url_for('static', filename='logout.png') }}" alt="Logout"></a>
         </div>
     </nav>
     <main>
@@ -28,13 +29,29 @@
                 -->
 
                 <p><b>State:</b> Online</p>
-                <p><b>Running on:</b> 127.0.0.1 <b>Port:</b> 5000</p>
-                <p><b>RAM:</b> 53%</p>
-                <p><b>CPU:</b> 12%</p>
-                <p><b>Uptime:</b> 13hours</p>
+                <p><b>Running on:</b> {{ info.lan_ip }} <b>Port:</b> {{ info['port'] }}</p>
+                <p id="ram"><b>RAM:</b> {{ info['ram'] }}</p>
+                <p id="cpu"><b>CPU:</b> {{ info['cpu'] }}</p>
+                <p id="uptime"><b>Uptime:</b> {{ info['uptime'] }}</p>
             </div>
         </section>
     </main>
+
+    <script>
+
+        // getting /server-info each N seconds and update info
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(() => {
+                let ram_percent = fetch('/server-info')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('ram').innerHTML = `<b>RAM:</b> ${data.ram}`
+                        document.getElementById('cpu').innerHTML = `<b>CPU:</b> ${data.cpu}`
+                        document.getElementById('uptime').innerHTML = `<b>Uptime:</b> ${data.uptime}`
+                    })
+            }, 1000)
+        })
+    </script>
 </body>
 
 </html>

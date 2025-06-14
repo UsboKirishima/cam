@@ -1,7 +1,11 @@
 from flask import Flask
 from flask_login import LoginManager
 
+from datetime import datetime
+import time
+
 login_manager = LoginManager()
+SERVER_START_TIME = datetime.now()
 
 from .auth import User
 
@@ -11,6 +15,8 @@ def load_user(user_id):
 
 def create_app():
     app = Flask(__name__)
+
+    SERVER_START_TIME = datetime.now()
     app.config['SECRET_KEY'] = 'supersecret'
 
     login_manager.init_app(app)

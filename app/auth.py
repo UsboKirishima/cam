@@ -9,6 +9,9 @@ class User(UserMixin):
     def __init__(self, username):
         self.id = username
 
+    def get_username(self):
+        return self.id
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

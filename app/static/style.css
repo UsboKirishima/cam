@@ -34,6 +34,7 @@ b {
 nav .info {
     display: flex;
     margin-left: auto;
+    align-items: center;
 }
 
 nav .info p {
@@ -65,4 +66,18 @@ main {
 
 .details p {
     margin: 3%;
+}
+
+.logout {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffffaf;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout > img {
+    width: 17px;
 }

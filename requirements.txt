@@ -1,3 +1,5 @@
 flask
 opencv-python
 flask-login
+requests
+psutil
